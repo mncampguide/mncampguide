@@ -97,11 +97,12 @@
         }).addTo(map);
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
-        function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
-        }
+   function setBounds() {
+    // Disabled fitBounds so hash in URL controls zoom/center
+    // if (bounds_group.getLayers().length) {
+    //     map.fitBounds(bounds_group.getBounds());
+    // }
+}
         map.createPane('pane_ESRISatelliteArcGISWorld_Imagery_0');
         map.getPane('pane_ESRISatelliteArcGISWorld_Imagery_0').style.zIndex = 400;
         var layer_ESRISatelliteArcGISWorld_Imagery_0 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
