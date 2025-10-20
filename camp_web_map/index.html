@@ -96,6 +96,15 @@
             position: 'topleft'
         }).addTo(map);
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+			if (location.hash) {
+  var parts = location.hash.replace('#', '').split('/');
+  if (parts.length === 3) {
+    var zoom = parseInt(parts[0]);
+    var lat = parseFloat(parts[1]);
+    var lon = parseFloat(parts[2]);
+    map.setView([lat, lon], zoom);
+  }
+}
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
             if (bounds_group.getLayers().length) {
