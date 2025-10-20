@@ -2004,6 +2004,26 @@
             collapsed: true,
         });
         lay.addTo(map);
+if (location.hash) {
+  var parts = location.hash.replace('#', '').split('/');
+  if (parts.length === 3) {
+    var zoom = parseInt(parts[0]);
+    var lat = parseFloat(parts[1]);
+    var lon = parseFloat(parts[2]);
+    map.setView([lat, lon], zoom);
+  }
+} else {
+  // If the #hash is stripped (like by Wix), try to read ?hash=
+  const queryParams = new URLSearchParams(window.location.search);
+  if (queryParams.has('hash')) {
+    var parts = queryParams.get('hash').split('/');
+    if (parts.length === 3) {
+      var zoom = parseInt(parts[0]);
+      var lat = parseFloat(parts[1]);
+      var lon = parseFloat(parts[2]);
+      map.setView([lat, lon], zoom);
+    }
+  } else {
         setBounds();
 var hash = new L.Hash(map);
         </script>
