@@ -106,9 +106,14 @@
   }
 }
 function setBounds() {
-    // Only fit to bounds if there is no hash (custom view)
-    if (!location.hash && bounds_group.getLayers().length) {
-        map.fitBounds(bounds_group.getBounds());
+    if (bounds_group.getLayers().length) {
+        // Always ensure bounds group layers are ready
+        var bounds = bounds_group.getBounds();
+
+        // Only fit to bounds if there is no hash (custom view)
+        if (!location.hash) {
+            map.fitBounds(bounds);
+        }
     }
 }
         map.createPane('pane_ESRISatelliteArcGISWorld_Imagery_0');
